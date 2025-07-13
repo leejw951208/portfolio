@@ -6,7 +6,7 @@ body {
     max-width: 1000px;
 }
 .container {
-    margin: 100px;
+    margin: 80px;
 }
 .main-title {
     font-size: 2.5rem;
@@ -52,6 +52,112 @@ body {
     color: #444;
     line-height: 1.7;
 }
+
+/* 연락처 & 기술 스택 컨테이너 */
+.contact-skills-container {
+    margin-top: 100px;
+    display: grid;
+    grid-template-columns: 1fr 2fr;
+    gap: 60px;
+    align-items: start;
+}
+
+/* 연락처 섹션 */
+.contact-section {
+    margin-top: 0;
+}
+
+.contact-content {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.contact-card {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+    margin-top: 20px;
+    width: 100%;
+    background: #fff;
+    padding: 24px;
+    border-radius: 12px;
+    box-shadow: 0 2px 12px rgba(0, 0, 0, 0.06);
+    border: 1px solid #f0f0f0;
+}
+
+.contact-item {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    padding: 8px 16px;
+    text-decoration: none;
+    color: #333;
+    border-radius: 6px;
+    transition: all 0.2s;
+    background: transparent;
+    border: 1px solid transparent;
+}
+
+.contact-item:hover {
+    background: #f8f9ff;
+    color: #2d5be3;
+    border-color: #e8f0ff;
+}
+
+.contact-icon {
+    width: 18px;
+    height: 18px;
+    flex-shrink: 0;
+}
+
+.contact-text {
+    font-size: 1rem;
+    font-weight: 400;
+}
+
+/* 기술 스택 섹션 */
+.skills-section {
+    margin-top: 0;
+}
+
+.skills-content {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.skills-tags {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 12px;
+    margin-top: 20px;
+    justify-content: center;
+    max-width: 100%;
+    background: #fff;
+    padding: 24px;
+    border-radius: 12px;
+    box-shadow: 0 2px 12px rgba(0, 0, 0, 0.06);
+    border: 1px solid #f0f0f0;
+}
+
+.skill-tag {
+    background: #f5f8ff;
+    color: #2d5be3;
+    padding: 8px 16px;
+    border-radius: 8px;
+    font-size: 0.95rem;
+    font-weight: 500;
+    border: 1px solid #e8f0ff;
+    transition: all 0.2s;
+}
+
+.skill-tag:hover {
+    background: #e8f0ff;
+    transform: translateY(-2px);
+    box-shadow: 0 2px 8px rgba(45, 91, 227, 0.15);
+}
+
 .experience-section {
     margin-top: 100px;
 }
@@ -71,6 +177,7 @@ body {
     flex-direction: column;
     gap: 40px;
     position: relative;
+    margin-top: 20px;
     padding-left: 29px;
 }
 .timeline::before {
@@ -123,15 +230,46 @@ body {
     background: #fff;
     border-radius: 8px;
     box-shadow: 0 2px 8px rgba(0, 0, 0, 0.04);
+    line-height: 1.5rem;
 }
 .project-section {
     margin-top: 150px;
 }
+
+.project-content {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
 .project-grid {
     display: grid;
     grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
     gap: 24px;
     margin-top: 40px;
+    max-height: 800px;
+    overflow-y: auto;
+    padding-right: 16px;
+    width: 100%;
+}
+
+/* 스크롤바 스타일링 */
+.project-grid::-webkit-scrollbar {
+    width: 8px;
+}
+
+.project-grid::-webkit-scrollbar-track {
+    background: #f1f1f1;
+    border-radius: 4px;
+}
+
+.project-grid::-webkit-scrollbar-thumb {
+    background: #c1c1c1;
+    border-radius: 4px;
+}
+
+.project-grid::-webkit-scrollbar-thumb:hover {
+    background: #a8a8a8;
 }
 .project-card {
     background: #fff;
@@ -163,6 +301,7 @@ body {
 .project-company {
     display: block;
     margin-bottom: 4px;
+    font-weight: 700;
 }
 .project-period {
     display: block;
