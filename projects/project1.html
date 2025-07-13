@@ -26,9 +26,9 @@
                 <section class="project-overview">
                     <h2>프로젝트 개요</h2>
                     <p class="project-description">
-                        전자정부 프레임워크 기반의 레거시 시스템을 Node.js 환경으로 전환하는 작업을 수행했습니다. 기존
-                        Java 기반 시스템을 현대적인 TypeScript + NestJS 환경으로 마이그레이션하여 개발 효율성과 시스템
-                        성능을 크게 향상시켰습니다.
+                        전자정부 프레임워크 기반의 레거시 시스템을 Node.js 환경으로 전환하는 작업을 수행했습니다.<br />
+                        기존 Java 기반 시스템을 Node.js 환경으로 마이그레이션하여 개발 효율성과 시스템 성능을 크게
+                        향상시켰습니다.
                     </p>
                 </section>
 
@@ -61,7 +61,7 @@
                                     <span class="count">2명</span>
                                 </div>
                                 <div class="team-member">
-                                    <span class="role">앱 개발</span>
+                                    <span class="role">앱</span>
                                     <span class="count">2명</span>
                                 </div>
                             </div>
@@ -182,55 +182,61 @@
                     <h2>개선 사례</h2>
                     <div class="improvement-cards-container">
                         <div class="improvement-card">
-                            <h3>구조 전환</h3>
+                            <h3>배포 구조 개선</h3>
                             <div class="improvement-content">
-                                <div class="improvement-as-is">
-                                    <h4>📍 AS-IS</h4>
-                                    <ul>
-                                        <li>전자정부 프레임워크 + WAR 기반 배포</li>
-                                        <li>235개 테이블로 구성된 복잡한 DB</li>
-                                        <li>이미지 첨부</li>
-                                    </ul>
+                                <div class="improvement-section">
+                                    <h4>📍 기존 상황</h4>
+                                    <div class="improvement-text">
+                                        <p>
+                                            전자정부 프레임워크 기반 WAR 파일 9개를 순차적으로 배포하고 있었고, 배포 시
+                                            Nginx 설정에서 배포 중인 서비스를 주석 처리 후 WAR를 배포해야 했었음.
+                                        </p>
+                                    </div>
                                 </div>
-                                <div class="improvement-to-be">
-                                    <h4>🛠 TO-BE</h4>
-                                    <ul>
-                                        <li>NestJS + PM2 클러스터 구조로 전환</li>
-                                        <li>테이블 구조 38개로 간소화</li>
-                                        <li>이미지 첨부</li>
-                                    </ul>
+
+                                <div class="improvement-section">
+                                    <h4>⚠️ 문제점</h4>
+                                    <div class="improvement-text">
+                                        <ul>
+                                            <li>
+                                                WAR 배포 시 Nginx 설정을 반복해서 수정해야 하고 실수로 인해 서비스가
+                                                중단되는 상황이 발생하였음
+                                            </li>
+                                            <li>
+                                                배포 시 서비스를 내리고 WAR를 교체한 후 다시 서비스를 올리는데 대략 2분
+                                                정도가 소요되었고 9개 배포 시 시간이 너무 많이 소요되는 문제가 있었음
+                                            </li>
+                                        </ul>
+                                    </div>
                                 </div>
-                                <div class="improvement-result">
-                                    <h4>🎯 Result</h4>
-                                    <ul>
-                                        <li>배포 시간 10분 → 3분</li>
-                                        <li>유지보수 비용/시간 절감</li>
-                                    </ul>
+
+                                <div class="improvement-section">
+                                    <h4>🛠 해결 방안</h4>
+                                    <div class="improvement-text">
+                                        <ul>
+                                            <li>
+                                                Node.js 환경으로 전환하면서 PM2를 사용하여 서비스를 내렸다 올리는
+                                                번거로움 없이 클러스터 모드로 무중단 배포 환경을 구성하였음
+                                            </li>
+                                            <li>
+                                                명령어로 간단하게 배포할 수 있게 되어 실수가 발생할 확률이 줄어들었고
+                                                배포 시간 또한 기존 15분이 넘는 시간에서 3분으로 단축하였음
+                                            </li>
+                                        </ul>
+                                    </div>
                                 </div>
-                            </div>
-                        </div>
-                        <div class="improvement-card">
-                            <h3>이벤트 참여 안정성</h3>
-                            <div class="improvement-content">
-                                <div class="improvement-as-is">
-                                    <h4>📍 기존 문제</h4>
-                                    <ul>
-                                        <li>이벤트 중복 참여 발생</li>
-                                        <li>추첨 시 데이터 무결성 문제</li>
-                                    </ul>
-                                </div>
-                                <div class="improvement-to-be">
-                                    <h4>🛠 해결</h4>
-                                    <ul>
-                                        <li>참여 키 해시 생성 및 DB 유니크 제약 적용</li>
-                                    </ul>
-                                </div>
-                                <div class="improvement-result">
-                                    <h4>🎯 성과</h4>
-                                    <ul>
-                                        <li>중복 참여 100% 차단</li>
-                                        <li>사용자 만족도 및 운영 효율 개선</li>
-                                    </ul>
+
+                                <div class="improvement-section">
+                                    <h4>🎯 개선 결과</h4>
+                                    <div class="improvement-text">
+                                        <ul>
+                                            <li>배포 시간 단축 (15분 → 3분)</li>
+                                            <li>무중단 배포로 서비스 가용성 향상</li>
+                                            <li>
+                                                개발 및 유지보수 효율성 크게 향상 (배포 시간 단축으로 개발 효율성 향상)
+                                            </li>
+                                        </ul>
+                                    </div>
                                 </div>
                             </div>
                         </div>
